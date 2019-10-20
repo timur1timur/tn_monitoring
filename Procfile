@@ -1,0 +1,1 @@
+web: gunicorn TNSocial_App.wsgi --log-file -

@@ -35,7 +35,7 @@ SECRET_KEY = 'j0x8@364thc#$c$zu8*77vhf_jy3qh(2)z#pl0ouno!(f5_g5y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -133,6 +133,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
