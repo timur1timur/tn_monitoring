@@ -1,0 +1,51 @@
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a href="#">
+            <img src="/static/monitoring/images/logo2.png" alt="Cool Admin" />
+        </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <li class="active has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-tachometer-alt"></i>Обзор</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+
+                      <li>
+                          <a href="{% url 'posts_week' %}">Обзор за неделю</a>
+                      </li>
+
+
+                    </ul>
+                </li>
+
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-table"></i>Упоминания</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                      <li>
+                          <a href="{% url 'all_url' %}">Все упоминания</a>
+                      </li>
+                      <li>
+                          <a href="{% url 'post_category_url' category='c_Common' %}">По категориям</a>
+                      </li>
+                        <li>
+                            <a href="{% url 'danger_url' %}">По тональности</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-bar"></i>Статистика</a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-copy"></i>Отчеты</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>

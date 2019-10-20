@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MSN app">
+    <meta name="author" content="MSN team">
+    <meta name="keywords" content="MSN app">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    {% include 'monitoring/m_connect.html' %}
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+
+        <!-- MENU SIDEBAR-->
+        {% include 'monitoring/m_menu.html' %}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+
+
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="overview-wrap">
+                                    <h2 class="title-1">обзор за неделю (07.10.2019 - 13.10.2019)</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-25">
+                            <div class="col-sm-6 col-lg-3">
+                                <a href="{% url 'all_url' %}">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+
+                                            <div class="text">
+                                                <h2>{{ stat.all_post}}</h2>
+                                                <span>упоминаний</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart_allpost"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <a href="{% url 'success_url' %}">
+                                <div class="overview-item overview-item--c2">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+
+                                            <div class="text">
+                                                <h2>{{ stat.success}}</h2>
+                                                <span>положительные</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart_success"></canvas>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <a href="{% url 'danger_url' %}">
+                                <div class="overview-item overview-item--c3">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+
+                                            <div class="text">
+                                                <h2>{{ stat.danger}}</h2>
+                                                <span>отрицательные</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart_danger"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <a href="{% url 'secondary_url' %}">
+                                <div class="overview-item overview-item--c4">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+
+                                            <div class="text">
+                                                <h2>{{ stat.secondary}}</h2>
+                                                <span>нейтральные</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart_secondary"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="au-card recent-report">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2">Типы упоминаний</h3>
+                                        <div class="chart-info">
+                                            <div class="chart-info__left">
+                                                <div class="chart-note">
+                                                    <span class="dot dot--blue"></span>
+                                                    <span>посты</span>
+                                                </div>
+                                                <div class="chart-note mr-0">
+                                                    <span class="dot dot--green"></span>
+                                                    <span>комментарии</span>
+                                                </div>
+                                            </div>
+                                            <div class="chart-info__right">
+                                                <div class="chart-statis">
+                                                    <span class="index incre">
+                                                        <i class="zmdi zmdi-long-arrow-up"></i>{{ type.post }}%</span>
+                                                    <span class="label">посты</span>
+                                                </div>
+                                                <div class="chart-statis mr-0">
+                                                    <span class="index decre">
+                                                        <i class="zmdi zmdi-long-arrow-down"></i>{{ type.reply }}%</span>
+                                                    <span class="label">комментарии</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="recent-report__chart">
+                                            <canvas id="recent-rep-chart-test"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card chart-percent-card">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 tm-b-5">Категории</h3>
+                                        <div class="row no-gutters">
+                                            <div class="col-xl-6">
+                                                <div class="chart-note-wrap">
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--1"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat0 %}">{{ cat.cat0 }}</a></span>
+                                                        <span> - {{ catItem.cat0 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--2"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat1 %}">{{ cat.cat1 }}</a></span>
+                                                        <span> - {{ catItem.cat1 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--3"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat2 %}">{{ cat.cat2 }}</a></span>
+                                                        <span> - {{ catItem.cat2 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--4"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat3 %}">{{ cat.cat3 }}</a></span>
+                                                        <span> - {{ catItem.cat3 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--5"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat4 %}">{{ cat.cat4 }}</a></span>
+                                                        <span> - {{ catItem.cat4 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--6"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat5 %}">{{ cat.cat5 }}</a></span>
+                                                        <span> - {{ catItem.cat5 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--7"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat6 %}">{{ cat.cat6 }}</a></span>
+                                                        <span> - {{ catItem.cat6 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--8"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat7 %}">{{ cat.cat7 }}</a></span>
+                                                        <span> - {{ catItem.cat7 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--9"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat8 %}">{{ cat.cat8 }}</a></span>
+                                                        <span> - {{ catItem.cat8 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--10"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat9 %}">{{ cat.cat9 }}</a></span>
+                                                        <span> - {{ catItem.cat9 }}%</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--11"></span>
+                                                        <span><a href="{% url 'post_category_url' category=catName.cat10 %}">{{ cat.cat10 }}</a></span>
+                                                        <span> - {{ catItem.cat10 }}%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="percent-chart">
+                                                    <canvas id="percent-chart_test"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="title-1 m-b-25">Последние 10 упоминаний</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>network</th>
+                                                <th>дата</th>
+                                                <th>запрос</th>
+                                                <th>тип</th>
+                                                <th>категория</th>
+                                                <th>тональность</th>
+                                                <th>оценка</th>
+                                                <th>детали</th>
+                                                <th>ссылка</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for p in posts %}
+                                            <tr>
+                                                <td><img src="/static/monitoring/images/vk.png"/></td>
+                                                <td>{{ p.post_date }}</td>
+                                                <td>{{ p.post_query }}</td>
+                                                <td>{{ p.post_type }}</td>
+                                                <td>{{ p.post_category }}</td>
+                                                <td><span class="badge badge-{{ p.post_mark }}">{{ p.post_mark }}</span></td>
+                                                <td>{{ p.post_score }}</td>
+                                                <td><a href="{{ p.get_absolute_url }}">смотреть</a></td>
+                                                <td><a href="{{ p.post_link }}">перейти</a></td>
+                                            </tr>
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    {% include 'monitoring/m_scripts.html' %}
+
+
+
+</body>
+
+</html>
+<!-- end document-->

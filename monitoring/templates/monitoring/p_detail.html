@@ -1,0 +1,53 @@
+{% extends 'monitoring/p_base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h4>{{ post.post_link }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="default-tab">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
+               aria-selected="true">Детали</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile"
+               aria-selected="false">Текст</a>
+             </div>
+          </nav>
+          <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <p><strong>Дата публикации:</strong> {{ post.post_date }}</p>
+              <p><strong>ID автора:</strong> {{ post.post_owner }} ( {{ post.post_ownert }} )</p>
+              <p><strong>Запрос:</strong> {{ post.post_query }}</p>
+              <p><strong>Категория:</strong> <span class="badge badge-dark">{{ post.post_category }}</span></p>
+              <p><strong>Тип упоминания:</strong> <span class="badge badge-light">{{ post.post_type }}</span></p>
+              <p><strong>Тональность:</strong> <span class="badge badge-{{ post.post_mark }}">{{ post.post_mark }}</span></p>
+              <p><strong>Оценка:</strong> {{ post.post_score }}</p>
+              <p><strong>Источник:</strong> <a href="{{ post.post_link }}">Перейти</a></p>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <p><strong>Ключевые слова:</strong></p>
+              <p>{{ post.post_keyword }}</p>
+              <p><strong>Текст:</strong></p>
+              <p>{{ post.post_text }}</p>
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+              <p><strong>Тональность:</strong></p>
+              <p>{{ post.post_text }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock content %}
